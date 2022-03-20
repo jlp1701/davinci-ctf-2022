@@ -1,0 +1,47 @@
+a length==39
+d (arg4.substring(0, 6).equals("dvCTF{")) && arg4.charAt(arg4.length() - 1) == 0x7D
+c arg4.substring(19, 30).equals("c1d284e27ff");
+f ((String)v1.invoke(v8, ((int)30), ((int)v8.length()))).equals("97bd0987");
+e
+b (arg2.contains("327f7e")) && arg2.indexOf("327f7e") == 6
+
+dvCTF{327f7e       c1d284e27ff97bd0987}
+dvCTF{327f7e0000499c1d284e27ff97bd0987}
+dvCTF{327f7e0000589c1d284e27ff97bd0987}
+dvCTF{327f7e07d7e98c1d284e27ff97bd0987}
+dvCTF{327f7e3cbf488c1d284e27ff97bd0987}
+
+
+java -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y -jar file.jar
+jdb -connect com.sun.jdi.SocketAttach:port=8000 
+
+ public static boolean e(String arg10) {
+        int v0 = Main.d;
+        boolean v3 = false;
+        int v4 = 12;
+        byte v5 = 0;
+        int v6 = 0;
+        while(v4 < 19) {
+            v5 = (byte)(v5 + ("3cbf488".charAt(v6) ^ arg10.charAt(v4)));
+            ++v6;
+            ++v4;
+            if(v0 != 0) {
+                goto label_28;
+            }
+
+            if(v0 != 0) {
+                break;
+            }
+        }
+
+        if(v5 == 0) {
+            v3 = true;
+        }
+
+    label_28:
+        if(Main.b != 0) {
+            Main.d = v0 + 1;
+        }
+
+        return v3;
+    }
